@@ -54,7 +54,7 @@ def move():
     tiempo += 1
     for body in snake:
         square(body.x, body.y, 9, colorSnake)
-    if (tiempo == 10):
+    if (tiempo == 7):
         if ((food.x <= 180 and food.x >= -180) and (food.y <= 180 and food.y >= -180)):
             food.x = food.x + random.choice(saltos)
             food.y = food.y + random.choice(saltos)
@@ -70,7 +70,7 @@ def move():
             food.x = food.x + saltos[0]
             food.y = food.y + saltos[0]
 
-        elif (food.x > 180 and food.y < -180): #Esquina Abajo Derecha
+        elif (food.x >= 180 and food.y <= -180): #Esquina Abajo Derecha
             food.x = food.x - saltos[0]
             food.y = food.y + saltos[0]
 
@@ -87,7 +87,7 @@ def move():
     update()
     ontimer(move, 80)
 #
-setup(420, 420, 370, 0)
+setup(420, 420, 360, 0)
 hideturtle()
 tracer(False)
 listen()
