@@ -55,9 +55,8 @@ def move():
     for body in snake:
         square(body.x, body.y, 9, colorSnake)
     if (tiempo == 5):
-        if (food.x < 180 and food.x > -180):
+        if ((food.x < 180 and food.x > -180) and (food.y < 180 and food.y > -180)):
             food.x = food.x + random.choice(saltos)
-        elif (food.y < 180 and food.y > -180):
             food.y = food.y + random.choice(saltos)
         elif (food.x > 180):
             food.x = food.x - saltos[0]
