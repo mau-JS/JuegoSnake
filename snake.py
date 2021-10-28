@@ -1,22 +1,25 @@
 """Snake, classic arcade game.
-
 Exercises
-
 1. How do you make the snake faster or slower?
 2. How can you make the snake go around the edges?
 3. How would you move the food?
 4. Change the snake to respond to arrow keys.
-
 """
 
 from turtle import *
-from random import randrange
+import random
 from freegames import square, vector
+
+
 
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
-
+colors=['green','magenta','purple', 'orange','blue']
+colorSnake=random.choice(colors)
+colorFood=random.choice(colors)
+while(colorSnake==colorFood):
+    colorFood=random.choice(colors)
 def change(x, y):
     "Change snake direction."
     aim.x = x
@@ -40,19 +43,19 @@ def move():
 
     if head == food:
         print('Snake:', len(snake))
-        food.x = randrange(-15, 15) * 10
-        food.y = randrange(-15, 15) * 10
+        food.x = random.randrange(-15, 15) * 10
+        food.y = random.randrange(-15, 15) * 10
+        square(food.x, food.y, 9, colorFood)
     else:
         snake.pop(0)
 
     clear()
 
     for body in snake:
-        square(body.x, body.y, 9, 'black')
-
-    square(food.x, food.y, 9, 'green')
+        square(body.x, body.y, 9, colorSnake)
+    square(food.x, food.y, 9, colorFood)
     update()
-    ontimer(move, 100)
+    ontimer(move, 50)
 
 setup(420, 420, 370, 0)
 hideturtle()
