@@ -86,7 +86,7 @@ def move():
     square(food.x, food.y, 9, colorFood)
     update()
     ontimer(move, 80)
-
+#
 setup(420, 420, 370, 0)
 hideturtle()
 tracer(False)
